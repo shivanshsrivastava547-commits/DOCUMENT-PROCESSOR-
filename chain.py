@@ -1,4 +1,3 @@
-
 from ppt_planner_prompt import ppt_planner_prompt
 from excel_planner_prompt import excel_planner_prompt
 from pdf_report_planner_prompt import pdf_report_planner_prompt
@@ -8,7 +7,8 @@ from intelligent_rag_question_generator import question_generator_prompt
 
 from langchain_core.output_parsers import StrOutputParser
 from question_parser import QuestionListParser
-from app.rag.rag_service import get_rag_response 
+from RAG.rag_service import get_rag_response
+
 
 def select_planner_prompt(document_type: str):
     """Select the appropriate content planner prompt."""
@@ -35,23 +35,21 @@ def run_document_chain(
     document_type: str,
     user_prompt: str,
     available_context: str = "No additional context provided.",
-    retriever=None,
 ):
     """
-    Generate a content plan, parse RAG questions, and optionally
-    retrieve documents for each question.
+    Generate a content plan, generate RAG questions, and retrieve
+    evidence-backed answers for each question.
 
     Args:
         document_type: PPT, Excel, or PDF.
         user_prompt: User's natural-language document request.
-        available_context: Any context already supplied by the user.
-        retriever: Optional configured LangChain retriever.
+        available_context: Additional context supplied by the user.
 
     Returns:
         A dictionary containing:
         - content_plan: Generated document plan.
-        - rag_questions: List of parsed retrieval questions.
-        - retrieved_results: Retrieved documents per question.
+        - rag_questions: Parsed retrieval questions.
+        - rag_results: Answers and sources for each question.
     """
 
     # STEP 1: Select the appropriate planner prompt.
@@ -80,8 +78,7 @@ def run_document_chain(
     print("[INFO] Content plan generated successfully.")
     print(f"[DEBUG] Content plan length: {len(content_plan)} characters")
 
-    # STEP 4: Build the Question Generator chain.
-    # QuestionListParser converts the LLM response into list[str].
+    # STEP 4: Build the RAG Question Generator chain.
     question_parser = QuestionListParser()
 
     question_generator_chain = (
@@ -124,48 +121,58 @@ def run_document_chain(
     for index, question in enumerate(rag_questions, start=1):
         print(f"{index}. {question}")
 
-    # STEP 7: Retrieve documents, if a retriever was supplied.
-    retrieved_results = []
+    # STEP 7: Send every question through the complete RAG pipeline.
+    rag_results = []
 
-    if retriever is not None:
-        print("\n[INFO] Retrieving documents for each question...")
+    print("\n[INFO] Sending questions to RAG...")
 
-        for index, question in enumerate(rag_questions, start=1):
+    for index, question in enumerate(rag_questions, start=1):
+        print(
+            f"\n[INFO] Processing question "
+            f"{index}/{len(rag_questions)}: {question}"
+        )
+
+        try:
+            # Retrieves relevant chunks and generates an answer.
+            rag_response = get_rag_response(question)
+
+            rag_results.append({
+                "question": question,
+                "answer": rag_response.get("answer", ""),
+                "sources": rag_response.get("sources", []),
+            })
+
+            print(f"[INFO] Successfully answered question {index}.")
+
+        except Exception as exc:
+            # Keep previous successful answers if one question fails.
+            rag_results.append({
+                "question": question,
+                "answer": None,
+                "sources": [],
+                "error": str(exc),
+            })
+
             print(
-                f"[INFO] Retrieving question "
-                f"{index}/{len(rag_questions)}..."
+                f"[ERROR] RAG failed for question {index}: {exc}"
             )
 
-            try:
-                documents = retriever.invoke(question)
+    successful_count = sum(
+        1 for item in rag_results
+        if item.get("answer") is not None and "error" not in item
+    )
 
-                retrieved_results.append({
-                    "question": question,
-                    "documents": documents,
-                })
+    failed_count = len(rag_results) - successful_count
 
-            except Exception as exc:
-                raise RuntimeError(
-                    f"Retrieval failed for question {index}: "
-                    f"{question!r}. Error: {exc}"
-                ) from exc
+    print("\n[INFO] RAG processing completed.")
+    print(f"[INFO] Successful answers: {successful_count}")
+    print(f"[INFO] Failed questions: {failed_count}")
 
-        print(
-            f"[INFO] Retrieval completed for "
-            f"{len(retrieved_results)} questions."
-        )
-
-    else:
-        print(
-            "[INFO] No retriever supplied. "
-            "Returning parsed questions for the next pipeline stage."
-        )
-
-    # STEP 8: Return structured results.
+    # STEP 8: Return results for the document-generation stage.
     return {
         "content_plan": content_plan,
         "rag_questions": rag_questions,
-        "retrieved_results": retrieved_results,
+        "rag_results": rag_results,
     }
 
 
@@ -199,15 +206,21 @@ if __name__ == "__main__":
         print(f"{index}. {question}")
 
     print("\n" + "=" * 60)
-    print("RETRIEVED RESULTS")
+    print("RAG ANSWERS AND SOURCES")
     print("=" * 60)
 
-    if result["retrieved_results"]:
-        for item in result["retrieved_results"]:
-            print(f"\nQuestion: {item['question']}")
-            print(f"Retrieved documents: {len(item['documents'])}")
-    else:
-        print(
-            "Retrieval was skipped because no retriever "
-            "was configured."
-        )
+    for index, item in enumerate(result["rag_results"], start=1):
+        print(f"\nQuestion {index}: {item['question']}")
+
+        if item.get("error"):
+            print(f"Error: {item['error']}")
+            continue
+
+        print(f"Answer:\n{item['answer']}")
+        print(f"Sources: {item['sources']}")
+
+    print("\n" + "=" * 60)
+    print("PIPELINE SUMMARY")
+    print("=" * 60)
+    print(f"Questions generated: {len(result['rag_questions'])}")
+    print(f"Results collected: {len(result['rag_results'])}")

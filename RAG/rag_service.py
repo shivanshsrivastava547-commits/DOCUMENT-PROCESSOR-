@@ -1,9 +1,7 @@
-# backend/app/rag/rag_service.py
-
-from app.rag.rag_chain import run_rag_chain
-from app.rag.rag_chain import stream_rag_chain as _stream_rag_chain
-from app.rag.ingest import ingest_document
-from app.logger.logger import logger
+from RAG.rag_chain import run_rag_chain
+from RAG.rag_chain import stream_rag_chain as _stream_rag_chain
+from RAG.ingest import ingest_document
+from RAG.logger import logger
 from typing import Iterator
 
 

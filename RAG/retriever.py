@@ -2,8 +2,8 @@
 
 from pinecone import Pinecone
 from langchain_core.documents import Document
-from app.config.settings import settings
-from app.logger.logger import logger
+from RAG.config import settings
+from RAG.logger import logger
 
 # ── Deep lazy singleton — loads on FIRST RAG call, not at startup ───────────
 # Uses FastEmbed (ONNX-based) instead of sentence-transformers (torch-based).
