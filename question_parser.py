@@ -2,12 +2,15 @@
 import json
 import re
 from typing import Any
+from typing import Any, ClassVar
 
 from langchain_core.output_parsers import BaseOutputParser
 
 
 class QuestionListParser(BaseOutputParser[list[str]]):
-    """Parse question-generator output into a clean list of questions."""
+    """Parse and normalize question-generator output."""
+
+    MAX_QUESTIONS: ClassVar[int] = 12
 
     def parse(self, text: str) -> list[str]:
         if not text or not text.strip():
@@ -15,51 +18,102 @@ class QuestionListParser(BaseOutputParser[list[str]]):
 
         text = text.strip()
 
-        # Remove Markdown code fences if the model includes them.
+        # Remove Markdown code fences.
         text = re.sub(
-            r"^```(?:json)?\s*|\s*```$",
+            r"```(?:json)?\s*",
             "",
             text,
             flags=re.IGNORECASE,
-        ).strip()
+        )
+        text = re.sub(r"\s*```", "", text).strip()
 
-        # Preferred format: a JSON array of questions.
+        questions: list[str] = []
+
+        # First attempt: parse a JSON array.
         try:
             data: Any = json.loads(text)
 
             if isinstance(data, dict):
-                data = data.get("questions")
+                data = data.get("questions", [])
 
-            if not isinstance(data, list):
-                raise ValueError(
-                    "Expected a JSON array or an object with a 'questions' array."
-                )
-
-            if not all(isinstance(item, str) for item in data):
-                raise ValueError("Every question must be a string.")
-
-            questions = data
+            if isinstance(data, list):
+                questions = [
+                    item for item in data
+                    if isinstance(item, str)
+                ]
 
         except json.JSONDecodeError:
-            # Fallback: accept plain-text numbered or bulleted questions.
-            questions = [
-                re.sub(r"^\s*(?:\d+[.)]|[-*•])\s*", "", line).strip()
-                for line in text.splitlines()
-                if line.strip()
-            ]
+            # Attempt to extract a JSON array if extra text exists.
+            try:
+                start = text.index("[")
+                decoder = json.JSONDecoder()
+                data, _ = decoder.raw_decode(text[start:])
 
-        # Normalize whitespace and remove empty or duplicate questions.
+                if isinstance(data, list):
+                    questions = [
+                        item for item in data
+                        if isinstance(item, str)
+                    ]
+
+            except (ValueError, json.JSONDecodeError):
+                questions = []
+
+        # Fallback: parse numbered or bulleted plain text.
+        if not questions:
+            for line in text.splitlines():
+                line = line.strip()
+
+                if not line:
+                    continue
+
+                # Remove numbering and bullet markers.
+                line = re.sub(
+                    r"^\s*(?:\d+[\.\)]\s*|[-*•]\s*)",
+                    "",
+                    line,
+                )
+
+                # Remove surrounding quotation marks.
+                line = line.strip().strip('"').strip("'").strip()
+
+                # Remove trailing commas and semicolons.
+                line = line.rstrip(",;").strip()
+
+                # Ignore JSON fragments and headings.
+                if line in {"[", "]", "{", "}", "```"}:
+                    continue
+
+                if line.lower().startswith("rag retrieval questions"):
+                    continue
+
+                if line.endswith(":") and len(line) < 100:
+                    continue
+
+                if line:
+                    questions.append(line)
+
+        # Normalize, validate, and remove duplicates.
         cleaned_questions = []
         seen = set()
 
         for question in questions:
             question = re.sub(r"\s+", " ", question).strip()
 
+            question = question.strip('"').strip("'").strip()
+            question = question.rstrip(",;").strip()
+
+            # Reject fragments and malformed entries.
             if not question:
                 continue
 
-            # Ignore headings if the model returns grouped questions.
-            if question.endswith(":") and len(question) < 80:
+            if question in {"[", "]", "{", "}"}:
+                continue
+
+            if len(question) < 10:
+                continue
+
+            # Keep actual questions only.
+            if not question.endswith("?"):
                 continue
 
             key = question.casefold()
@@ -69,9 +123,12 @@ class QuestionListParser(BaseOutputParser[list[str]]):
                 cleaned_questions.append(question)
 
         if not cleaned_questions:
-            raise ValueError("No valid questions were parsed.")
+            raise ValueError(
+                "No valid retrieval questions could be parsed."
+            )
 
-        return cleaned_questions
+        # Final safety limit.
+        return cleaned_questions[:self.MAX_QUESTIONS]
 
     @property
     def _type(self) -> str:

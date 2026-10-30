@@ -1,0 +1,125 @@
+{
+    "content_plan": "**1. PRESENTATION OBJECTIVE**  \nProvide the executive team with a concise, data‑driven overview of the company’s quarterly business performance, focusing on key financial and operational metrics that inform strategic decision‑making.\n\n**2. INTENDED AUDIENCE AND COMMUNICATION STYLE**  \n- **Audience:** Executive team (C‑suite, finance, product, sales leaders).  \n- **Style:** Professional, concise, data‑centric. Use clear headings, bullet points, and visual summaries. Avoid jargon unless it is standard within the organization.  \n\n**3. KEY INFORMATION REQUIREMENTS**  \n| Category | Details | Source Status |\n|----------|---------|---------------|\n| **Reporting period** | Current quarter (Qx 20xx) and previous quarter for comparison | Requires clarification |\n| **Financial metrics** | Revenue, recurring revenue, ARR, churn, MRR, gross margin, operating income | Requires retrieval |\n| **Operational metrics** | New subscriptions, renewals, upsells, churned customers, CAC, LTV | Requires retrieval |\n| **Benchmarks** | Industry averages or internal targets for key KPIs | Optional |\n| **Definitions** | How metrics are calculated (e.g., churn definition) | Requires retrieval |\n| **Historical context** | Prior quarter/annual figures for trend context | Requires retrieval |\n| **Executive commentary** | Any strategic notes or highlights from leadership | Optional |\n\n**4. RECOMMENDED SLIDE COUNT**  \n10 slides (as requested).\n\n**5. SLIDE‑BY‑SLIDE CONTENT PLAN**\n\n| Slide | Title | Purpose | Information Required | Evidence Required | Metrics / Calculations | Suggested Visualization | Dependencies |\n|-------|-------|---------|----------------------|-------------------|------------------------|--------------------------|--------------|\n| 1 | Executive Summary | Quick snapshot of overall performance and key take‑aways | High‑level totals: revenue, ARR, churn, gross margin | Company financial statements (Qx) | None | KPI cards (Revenue, ARR, Churn %, Gross Margin) | None |\n| 2 | Revenue Overview | Show total revenue and compare to prior quarter | Current Q revenue, previous Q revenue | Income statement | % change = (Curr – Prev)/Prev | Bar chart (two bars) | Slide 1 |\n| 3 | Recurring Revenue Breakdown | Detail MRR, ARR, and growth | Current MRR, ARR, growth rates | Subscription ledger | Growth % = (Curr – Prev)/Prev | Stacked bar or line chart | Slide 2 |\n| 4 | Customer Metrics | New, retained, churned customers | Counts of new, retained, churned customers | CRM data | Churn rate = churned / total | Table or bar chart | Slide 3 |\n| 5 | Gross Margin Analysis | Profitability of subscription business | Gross profit, revenue | Income statement | Gross margin % = Gross profit / Revenue | Line chart or KPI card | Slide 2 |\n| 6 | CAC & LTV | Cost of acquisition vs lifetime value | CAC, LTV, LTV/CAC ratio | Marketing spend, revenue per customer | LTV/CAC = LTV / CAC | Dual‑axis chart | Slide 4 |\n| 7 | Churn & Retention | Deeper dive into churn drivers | Churned revenue, churned customers, retention rate | Subscription ledger | Retention % = 1 – churn rate | Funnel diagram or line chart | Slide 4 |\n| 8 | Operational Efficiency | Operating expenses vs revenue | Operating expenses, EBITDA | Income statement | EBITDA margin = EBITDA / Revenue | Bar chart | Slide 5 |\n| 9 | Strategic Highlights | Key initiatives or market developments | Executive notes, product releases | Leadership communications | None | Text bullets with icons | None |\n| 10 | Next Steps & Questions | Action items and discussion prompts | Proposed actions, decision points | None | None | Text layout | Slides 1‑9 |\n\n**6. REQUIRED DATA AND SOURCE DOCUMENTS**  \n- Income statement for current and prior quarter.  \n- Subscription ledger (customer counts, MRR, ARR).  \n- CRM data for churn/new/retention metrics.  \n- Marketing spend reports for CAC.  \n- Executive commentary or strategic briefings.  \n- Any internal benchmarks or target tables.\n\n**7. ANALYTICAL AND CALCULATION REQUIREMENTS**  \n| Metric | Inputs | Formula | Source |\n|--------|--------|---------|--------|\n| Revenue growth % | Curr Q revenue, Prev Q revenue | (Curr – Prev)/Prev | Income statement |\n| MRR/ARR growth % | Curr MRR/ARR, Prev MRR/ARR | (Curr – Prev)/Prev | Subscription ledger |\n| Churn rate | Churned customers, Total customers | Churned / Total | CRM |\n| Gross margin % | Gross profit, Revenue | Gross profit / Revenue | Income statement |\n| LTV/CAC | LTV, CAC | LTV / CAC | Marketing spend, revenue per customer |\n| EBITDA margin | EBITDA, Revenue | EBITDA / Revenue | Income statement |\n\n**8. VISUALIZATION REQUIREMENTS**  \n- KPI cards for high‑level figures.  \n- Bar charts for side‑by‑side comparisons (revenue, MRR).  \n- Line charts for trend over time (if historical data available).  \n- Stacked bars for recurring revenue components.  \n- Funnel or waterfall for churn analysis.  \n- Dual‑axis chart for CAC vs LTV.  \n- Tables for detailed customer counts.  \n\nEach visualization must be labeled with metric names, units, and reporting period.\n\n**9. DESIGN AND FORMATTING GUIDELINES**  \n- **Style:** Neutral professional (e.g., muted blue/gray palette).  \n- **Typography:** Sans‑serif (e.g., Calibri, Arial) for readability.  \n- **Hierarchy:** Title (large), subtitle (medium), body (small).  \n- **Whitespace:** Adequate margins, avoid clutter.  \n- **Accessibility:** High contrast, legible font size (≥ 18pt for body).  \n- **Consistency:** Same chart styles, color coding across slides.  \n- **Branding:** If brand colors or logos are available, incorporate; otherwise use neutral palette.\n\n**10. MISSING INFORMATION AND UNRESOLVED DECISIONS**  \n| Gap | Why It Matters | Action |\n|-----|----------------|--------|\n| Exact reporting quarter (e.g., Q1 2025) | Needed for accurate time‑frame labels and comparisons | Clarify with user |\n| Prior quarter figures (revenue, MRR, churn) | Required for growth calculations | Retrieve from financial reports |\n| Definitions of key metrics (e.g., churn, CAC, LTV) | Ensures consistent calculation | Retrieve from internal documentation |\n| Any internal benchmarks or targets | Provides context for performance | Retrieve or clarify with user |\n| Executive commentary or strategic highlights | Needed for slide 9 | Obtain from leadership briefings |\n\n**11. ASSUMPTIONS AND CONSTRAINTS**  \n- No assumptions about performance trends or causes.  \n- All calculations will be performed only after all required inputs are confirmed.  \n- Visualizations will be selected only when the underlying data is available.  \n- The plan refrains from presenting conclusions; it only outlines what data is needed to derive them.  \n- Any missing data will be flagged for retrieval or clarification before content creation.",
+    "rag_questions": [
+        "What was the company's total revenue for the current quarter (Qx 20xx) and the previous quarter?",
+        "What were the recurring revenue figures (MRR and ARR) for the current quarter and the previous quarter?",
+        "What is the churn rate (percentage of customers lost) for the current quarter and the previous quarter?",
+        "What were the gross profit and revenue amounts reported in the income statement for the current quarter and the previous quarter?",
+        "What were the marketing spend and customer acquisition cost (CAC) for the current quarter?",
+        "What is the lifetime value (LTV) of a customer as defined in the company's internal documentation?",
+        "What were the numbers of new subscriptions, renewals, upsells, and churned customers for the current quarter?",
+        "What operating expenses and EBITDA figures were reported for the current quarter?",
+        "What internal benchmarks or target values exist for key KPIs such as revenue growth, churn, and gross margin?",
+        "What executive commentary or strategic highlights were documented for the current quarter?"
+    ],
+    "rag_results": [
+        {
+            "question": "What was the company's total revenue for the current quarter (Qx 20xx) and the previous quarter?",
+            "answer": "The report shows the company’s revenue was **$10.10 million in the current quarter (Q3 FY26)** and **$9.40 million in the preceding quarter (Q2 FY26)**【1】【4】.",
+            "sources": [
+                "E:\\temperary storage\\Downloads\\fictional_quarterly_business_performance_report.pdf"
+            ]
+        },
+        {
+            "question": "What were the recurring revenue figures (MRR and ARR) for the current quarter and the previous quarter?",
+            "answer": "I couldn't find relevant information in the uploaded documents.",
+            "sources": [
+                "E:\\temperary storage\\Downloads\\fictional_quarterly_business_performance_report.pdf"
+            ]
+        },
+        {
+            "question": "What is the churn rate (percentage of customers lost) for the current quarter and the previous quarter?",
+            "answer": "I couldn’t find a churn figure for the previous quarter in the uploaded documents.  \nFor the current quarter, the report states a customer retention rate of 91.5 %【4】.  \nAssuming churn is the complement of retention, the churn rate for the current quarter would be:\n\n\\[\n\\text{Churn rate} = 100\\% - 91.5\\% = 8.5\\%\n\\]\n\nSo, the current‑quarter churn rate is 8.5 %, while the previous‑quarter churn rate is not provided in the available context.",
+            "sources": [
+                "E:\\temperary storage\\Downloads\\fictional_quarterly_business_performance_report.pdf"
+            ]
+        },
+        {
+            "question": "What were the gross profit and revenue amounts reported in the income statement for the current quarter and the previous quarter?",
+            "answer": "**Current quarter (Q3 FY26)**  \n- Revenue: **$10.10 million**【2】  \n- Gross profit: $10.10 M × 40.1 % = **$4.05 million** (calculated using the gross‑margin definition【1】)\n\n**Previous quarter (Q2 FY26)**  \n- Revenue: **$9.40 million**【2】  \n- Gross profit: $9.40 M × 39.2 % = **$3.68 million** (calculated using the gross‑margin definition【1】)",
+            "sources": [
+                "E:\\temperary storage\\Downloads\\fictional_quarterly_business_performance_report.pdf"
+            ]
+        },
+        {
+            "question": "What were the marketing spend and customer acquisition cost (CAC) for the current quarter?",
+            "answer": "I couldn't find relevant information in the uploaded documents.",
+            "sources": [
+                "E:\\temperary storage\\Downloads\\fictional_quarterly_business_performance_report.pdf"
+            ]
+        },
+        {
+            "question": "What is the lifetime value (LTV) of a customer as defined in the company's internal documentation?",
+            "answer": "I couldn't find relevant information in the uploaded documents.",
+            "sources": [
+                "E:\\temperary storage\\Downloads\\fictional_quarterly_business_performance_report.pdf"
+            ]
+        },
+        {
+            "question": "What were the numbers of new subscriptions, renewals, upsells, and churned customers for the current quarter?",
+            "answer": "I couldn't find relevant information in the uploaded documents.",
+            "sources": [
+                "E:\\temperary storage\\Downloads\\fictional_quarterly_business_performance_report.pdf"
+            ]
+        },
+        {
+            "question": "What operating expenses and EBITDA figures were reported for the current quarter?",
+            "answer": "I couldn't find relevant information in the uploaded documents. None of the provided excerpts mention operating expenses or EBITDA figures for the current quarter.",
+            "sources": [
+                "E:\\temperary storage\\Downloads\\fictional_quarterly_business_performance_report.pdf"
+            ]
+        },
+        {
+            "question": "What internal benchmarks or target values exist for key KPIs such as revenue growth, churn, and gross margin?",
+            "answer": "**Internal benchmarks / target values (as shown in the report)**  \n\n| KPI | Target / benchmark | Source |\n|-----|--------------------|--------|\n| **Revenue** | $10.50 million (Q3 target) | [1] |\n| **Gross margin** | 40.0 % | [1] |\n| **Customer retention** | 92.0 % (implies a churn target of 8.0 %) | [4] |\n| **Revenue growth (quarter‑over‑quarter)** | 7.4 % (reported growth, used as a benchmark) | [3] |\n\nThese figures are the internal targets set for the key performance indicators in the fictional quarterly report.",
+            "sources": [
+                "E:\\temperary storage\\Downloads\\fictional_quarterly_business_performance_report.pdf"
+            ]
+        },
+        {
+            "question": "What executive commentary or strategic highlights were documented for the current quarter?",
+            "answer": "**Executive commentary / strategic highlights for Q3 FY26**\n\n| Item | Detail | Source |\n|------|--------|--------|\n| Revenue & profit | Revenue $10.10 M (+7.4 % QoQ), net profit $1.11 M | [3] |\n| Target attainment | 96.2 % of revenue target, 96.5 % of profit target | [3] |\n| Gross margin | 40.1 % | [3] |\n| Revenue trend | Up 7.4 % QoQ from $9.40 M (Q2 FY26) and 17.4 % YoY from $8.60 M (Q3 FY25) | [4] |\n| Strategic focus for next quarter | Convert growth into target attainment while maintaining margin discipline | [1] |\n| Recommended actions | Highlighted in the executive review as actions for the next quarter | [3] |\n\nThese points summarize the executive‑level commentary and strategic priorities recorded for the current quarter.",
+            "sources": [
+                "E:\\temperary storage\\Downloads\\fictional_quarterly_business_performance_report.pdf"
+            ]
+        }
+    ],
+    "retrieved_information": [
+        {
+            "question": "What was the company's total revenue for the current quarter (Qx 20xx) and the previous quarter?",
+            "answer": "The report shows the company’s revenue was **$10.10 million in the current quarter (Q3 FY26)** and **$9.40 million in the preceding quarter (Q2 FY26)**【1】【4】.",
+            "sources": [
+                "E:\\temperary storage\\Downloads\\fictional_quarterly_business_performance_report.pdf"
+            ]
+        },
+        {
+            "question": "What is the churn rate (percentage of customers lost) for the current quarter and the previous quarter?",
+            "answer": "I couldn’t find a churn figure for the previous quarter in the uploaded documents.  \nFor the current quarter, the report states a customer retention rate of 91.5 %【4】.  \nAssuming churn is the complement of retention, the churn rate for the current quarter would be:\n\n\\[\n\\text{Churn rate} = 100\\% - 91.5\\% = 8.5\\%\n\\]\n\nSo, the current‑quarter churn rate is 8.5 %, while the previous‑quarter churn rate is not provided in the available context.",
+            "sources": [
+                "E:\\temperary storage\\Downloads\\fictional_quarterly_business_performance_report.pdf"
+            ]
+        },
+        {
+            "question": "What were the gross profit and revenue amounts reported in the income statement for the current quarter and the previous quarter?",
+            "answer": "**Current quarter (Q3 FY26)**  \n- Revenue: **$10.10 million**【2】  \n- Gross profit: $10.10 M × 40.1 % = **$4.05 million** (calculated using the gross‑margin definition【1】)\n\n**Previous quarter (Q2 FY26)**  \n- Revenue: **$9.40 million**【2】  \n- Gross profit: $9.40 M × 39.2 % = **$3.68 million** (calculated using the gross‑margin definition【1】)",
+            "sources": [
+                "E:\\temperary storage\\Downloads\\fictional_quarterly_business_performance_report.pdf"
+            ]
+        },
+        {
+            "question": "What internal benchmarks or target values exist for key KPIs such as revenue growth, churn, and gross margin?",
+            "answer": "**Internal benchmarks / target values (as shown in the report)**  \n\n| KPI | Target / benchmark | Source |\n|-----|--------------------|--------|\n| **Revenue** | $10.50 million (Q3 target) | [1] |\n| **Gross margin** | 40.0 % | [1] |\n| **Customer retention** | 92.0 % (implies a churn target of 8.0 %) | [4] |\n| **Revenue growth (quarter‑over‑quarter)** | 7.4 % (reported growth, used as a benchmark) | [3] |\n\nThese figures are the internal targets set for the key performance indicators in the fictional quarterly report.",
+            "sources": [
+                "E:\\temperary storage\\Downloads\\fictional_quarterly_business_performance_report.pdf"
+            ]
+        },
+        {
+            "question": "What executive commentary or strategic highlights were documented for the current quarter?",
+            "answer": "**Executive commentary / strategic highlights for Q3 FY26**\n\n| Item | Detail | Source |\n|------|--------|--------|\n| Revenue & profit | Revenue $10.10 M (+7.4 % QoQ), net profit $1.11 M | [3] |\n| Target attainment | 96.2 % of revenue target, 96.5 % of profit target | [3] |\n| Gross margin | 40.1 % | [3] |\n| Revenue trend | Up 7.4 % QoQ from $9.40 M (Q2 FY26) and 17.4 % YoY from $8.60 M (Q3 FY25) | [4] |\n| Strategic focus for next quarter | Convert growth into target attainment while maintaining margin discipline | [1] |\n| Recommended actions | Highlighted in the executive review as actions for the next quarter | [3] |\n\nThese points summarize the executive‑level commentary and strategic priorities recorded for the current quarter.",
+            "sources": [
+                "E:\\temperary storage\\Downloads\\fictional_quarterly_business_performance_report.pdf"
+            ]
+        }
+    ],
+    "output_path": "C:\\Users\\panka\\OneDrive\\Desktop\\Internship work\\Content_Planner\\OUTPUTS\\generated_presentation.pptx"
+}

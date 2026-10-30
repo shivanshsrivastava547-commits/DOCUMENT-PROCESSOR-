@@ -1,0 +1,82 @@
+{
+    "slides": [
+        {
+            "title": "Quarterly Business Performance Overview",
+            "content": [
+                "Executive summary of Q3 FY26 performance",
+                "Key metrics: revenue, gross profit, churn",
+                "Alignment with internal targets"
+            ]
+        },
+        {
+            "title": "Revenue Performance",
+            "content": [
+                "Current quarter revenue: $10.10 million",
+                "Previous quarter revenue: $9.40 million",
+                "Quarter‑over‑quarter growth: 7.4 %"
+            ]
+        },
+        {
+            "title": "Gross Profit Analysis",
+            "content": [
+                "Current quarter gross profit: $4.05 million (40.1 % margin)",
+                "Previous quarter gross profit: $3.68 million (39.2 % margin)",
+                "Margin improvement: 0.9 percentage points"
+            ]
+        },
+        {
+            "title": "Churn and Retention",
+            "content": [
+                "Current quarter churn rate: 8.5 % (derived from 91.5 % retention)",
+                "Previous quarter churn rate: Data not available in the provided sources"
+            ]
+        },
+        {
+            "title": "Internal Benchmarks",
+            "content": [
+                "Revenue target for Q3: $10.50 million",
+                "Gross margin target: 40.0 %",
+                "Retention target: 92.0 % (churn target 8.0 %)"
+            ]
+        },
+        {
+            "title": "Target Attainment",
+            "content": [
+                "Revenue achieved: 96.2 % of target",
+                "Gross margin achieved: 40.1 % (above target)",
+                "Retention achieved: 91.5 % (slightly below target)"
+            ]
+        },
+        {
+            "title": "Strategic Highlights",
+            "content": [
+                "Revenue growth of 7.4 % QoQ",
+                "Maintained margin discipline at 40.1 %",
+                "Focus on converting growth into target attainment next quarter"
+            ]
+        },
+        {
+            "title": "Recommendations for Next Quarter",
+            "content": [
+                "Enhance customer retention initiatives to meet 92.0 % target",
+                "Continue margin optimization strategies",
+                "Align sales and marketing efforts to sustain revenue growth"
+            ]
+        },
+        {
+            "title": "Key Takeaways",
+            "content": [
+                "Revenue and margin exceeded expectations",
+                "Churn remains a concern; retention below target",
+                "Strategic focus on conversion and margin discipline"
+            ]
+        },
+        {
+            "title": "Questions & Discussion",
+            "content": [
+                "Open floor for executive questions",
+                "Discussion on action items and next steps"
+            ]
+        }
+    ]
+}
